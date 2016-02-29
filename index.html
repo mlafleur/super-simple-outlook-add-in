@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//appsforoffice.microsoft.com/fabric/2.0.1/fabric.min.css">
+    <link rel="stylesheet" href="//appsforoffice.microsoft.com/fabric/2.0.1/fabric.components.min.css">
+</head>
+<body class="ms-font-m" style="margin: 0;padding: 0;overflow-x: hidden;">
+    
+    <div style="top: 80px;left: 0;right: 0;bottom: 0;overflow: auto;padding: 15px;">
+        <div class="ms-Grid">
+            <div class="ms-Grid-row" id="persona-cards">
+            </div>
+        </div>
+    </div>
+
+    <script id="template" type="x-tmpl-mustache">
+        <div class="ms-Grid-col" style="padding:5px">
+            <div class="ms-PersonaCard">
+                <div class="ms-PersonaCard-persona">
+                    <div class="ms-Persona ms-Persona--xl">
+                        <div class="ms-Persona-imageArea">
+                            <div class="ms-Persona-initials ms-Persona-initials--blue">{{initials}}</div>
+                        </div>
+                        <div class="ms-Persona-details">
+                            <div class="ms-Persona-primaryText">{{name}}</div>
+                            <div class="ms-Persona-secondaryText">{{address}}</div>
+                            <div class="ms-Persona-tertiaryText">{{subject}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="//appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
+    <script type="text/javascript">
+        var template = $('#template').html();
+
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+                Mustache.parse(template);   // optional, speeds up future uses
+
+                var from;
+                var to = [];
+                var cc = [];
+
+                var item = Office.cast.item.toItemRead(Office.context.mailbox.item);
+                if (item.itemType === Office.MailboxEnums.ItemType.Message) {
+                    from = Office.cast.item.toMessageRead(item).from;
+                    to = Office.cast.item.toMessageRead(item).to;
+                    cc = Office.cast.item.toMessageRead(item).cc;
+                } else if (item.itemType === Office.MailboxEnums.ItemType.Appointment) {
+                    from = Office.cast.item.toAppointmentRead(item).organizer;
+                    to = Office.cast.item.toAppointmentRead(item).requiredAttendees;
+                    cc = Office.cast.item.toAppointmentRead(item).optionalAttendees;
+                }
+
+
+                renderPersona(from);
+                for (var i in to) { renderPersona(to[i]); };
+                for (var i in cc) { renderPersona(cc[i]); };
+
+            });
+
+            function renderPersona(persona) {
+                var initials = persona.displayName.match(/\b\w/g);
+                initials = (initials.shift() + initials.pop()).toUpperCase();
+                var rendered = Mustache.render(template, {
+                    initials: initials,
+                    name: persona.displayName,
+                    address: persona.emailAddress,
+                });
+                $('#persona-cards').append(rendered);
+            }
+
+        };
+    </script>
+</body>
+</html>
