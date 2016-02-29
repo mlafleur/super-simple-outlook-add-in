@@ -1,37 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-           xsi:type="MailApp">
-           
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+
   <Id>24e902db-8e7b-419b-843f-bfc6fcdcce19</Id>
-  
+
   <Version>1.0.0.0</Version>
   <ProviderName>Marc LaFleur</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Persona Cards" />
   <Description DefaultValue="Display Persona Cards for every person on an email or appointment."/>
-  
+
+
+  <IconUrl DefaultValue="https://officekiss.azurewebsites.net/images/64x64.png" />
+  <HighResolutionIconUrl DefaultValue="https://officekiss.azurewebsites.net/images/128x128.png" />
+
   <SupportUrl DefaultValue="http://massivescale.com" />
-  
-  <IconUrl DefaultValue="https://placehold.it/64x64" />
-  <HighResolutionIconUrl DefaultValue="https://placehold.it/128x128" />
-  
-  <AppDomains>
-    <AppDomain>https://placehold.it</AppDomain>
-  </AppDomains>
-  
   
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
-  
+
   <Requirements>
     <Sets>
       <Set Name="MailBox" MinVersion="1.1" />
     </Sets>
   </Requirements>
-  
+
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
@@ -40,17 +39,17 @@
       </DesktopSettings>
     </Form>
   </FormSettings>
-  
+
   <Permissions>ReadItem</Permissions>
-  
+
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
     <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read" />
   </Rule>
-  
+
   <DisableEntityHighlighting>false</DisableEntityHighlighting>
-  
-   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Requirements>
       <bt:Sets DefaultMinVersion="1.3">
         <bt:Set Name="Mailbox" />
@@ -94,16 +93,16 @@
             </OfficeTab>
           </ExtensionPoint>
 
-    
+
         </DesktopFormFactor>
       </Host>
     </Hosts>
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon-16" DefaultValue="https://placehold.it/16x16"/>
-        <bt:Image id="icon-32" DefaultValue="https://placehold.it/32x32x"/>
-        <bt:Image id="icon-80" DefaultValue="https://placehold.it/80x80"/>
+        <bt:Image id="icon-16" DefaultValue="https://officekiss.azurewebsites.net/images/16x16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://officekiss.azurewebsites.net/images/32x32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://officekiss.azurewebsites.net/images/80x80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="readPaneUrl" DefaultValue="https://officekiss.azurewebsites.net/index.html"/>
@@ -120,6 +119,6 @@
 
 
   </VersionOverrides>
-  
-  
+
+
 </OfficeApp>
