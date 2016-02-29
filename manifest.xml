@@ -18,7 +18,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="http://officekiss.azurewebsites.net/index.html"/>
+        <SourceLocation DefaultValue="https://officekiss.azurewebsites.net/index.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
