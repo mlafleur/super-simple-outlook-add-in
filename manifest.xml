@@ -18,7 +18,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://raw.githubusercontent.com/mlafleur/super-simple-outlook-add-in/master/index.html"/>
+        <SourceLocation DefaultValue="http://officekiss.azurewebsites.net/index.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
