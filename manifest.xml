@@ -1,124 +1,34 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
-<OfficeApp
-  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
-  xsi:type="MailApp">
-
-  <Id>24e902db-8e7b-419b-843f-bfc6fcdcce19</Id>
-
-  <Version>1.0.0.0</Version>
-  <ProviderName>Marc LaFleur</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Persona Cards" />
-  <Description DefaultValue="Display Persona Cards for every person on an email or appointment."/>
-
-
-  <IconUrl DefaultValue="https://officekiss.azurewebsites.net/images/64x64.png" />
-  <HighResolutionIconUrl DefaultValue="https://officekiss.azurewebsites.net/images/128x128.png" />
-
-  <SupportUrl DefaultValue="http://massivescale.com" />
-  
-  <Hosts>
-    <Host Name="Mailbox" />
-  </Hosts>
-
-  <Requirements>
-    <Sets>
-      <Set Name="MailBox" MinVersion="1.1" />
-    </Sets>
-  </Requirements>
-
-  <FormSettings>
-    <Form xsi:type="ItemRead">
-      <DesktopSettings>
-        <SourceLocation DefaultValue="https://officekiss.azurewebsites.net/index.html"/>
-        <RequestedHeight>250</RequestedHeight>
-      </DesktopSettings>
-    </Form>
-  </FormSettings>
-
-  <Permissions>ReadItem</Permissions>
-
-  <Rule xsi:type="RuleCollection" Mode="Or">
-    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
-    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read" />
-  </Rule>
-
-  <DisableEntityHighlighting>false</DisableEntityHighlighting>
-
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
-    <Requirements>
-      <bt:Sets DefaultMinVersion="1.3">
-        <bt:Set Name="Mailbox" />
-      </bt:Sets>
-    </Requirements>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+    <Id>24e902db-8e7b-419b-843f-bfc6fcdcce19</Id>
+    <Version>1.0.0.0</Version>
+    <ProviderName>Marc LaFleur</ProviderName>
+    <DefaultLocale>en-US</DefaultLocale>
+    <DisplayName DefaultValue="Persona Cards" />
+    <Description DefaultValue="Display Persona Cards for every person on an email or appointment." />
+    <IconUrl DefaultValue="https://officekiss.azurewebsites.net/images/64x64.png" />
+    <HighResolutionIconUrl DefaultValue="https://officekiss.azurewebsites.net/images/128x128.png" />
+    <SupportUrl DefaultValue="http://massivescale.com" />
     <Hosts>
-      <Host xsi:type="MailHost">
-
-        <DesktopFormFactor>
-          <!-- Custom pane, only applies to read form -->
-          <ExtensionPoint xsi:type="CustomPane">
-            <RequestedHeight>400</RequestedHeight>
-            <SourceLocation resid="readPaneUrl"/>
-            <Rule xsi:type="RuleCollection" Mode="Or">
-              <Rule xsi:type="ItemIs" ItemType="Message"/>
-              <Rule xsi:type="ItemIs" ItemType="AppointmentAttendee"/>
-            </Rule>
-          </ExtensionPoint>
-
-          <!-- Message read form -->
-          <ExtensionPoint xsi:type="MessageReadCommandSurface">
-            <OfficeTab id="TabDefault">
-              <Group id="msgReadDemoGroup">
-                <Label resid="groupLabel" />
-                <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                  <Label resid="readButtonLabel" />
-                  <Supertip>
-                    <Title resid="readTipTitle" />
-                    <Description resid="readTipDescription" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="icon-16" />
-                    <bt:Image size="32" resid="icon-32" />
-                    <bt:Image size="80" resid="icon-80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="readPaneUrl" />
-                  </Action>
-                </Control>
-              </Group>
-            </OfficeTab>
-          </ExtensionPoint>
-
-
-        </DesktopFormFactor>
-      </Host>
+        <Host Name="Mailbox" />
     </Hosts>
-
-    <Resources>
-      <bt:Images>
-        <bt:Image id="icon-16" DefaultValue="https://officekiss.azurewebsites.net/images/16x16.png"/>
-        <bt:Image id="icon-32" DefaultValue="https://officekiss.azurewebsites.net/images/32x32.png"/>
-        <bt:Image id="icon-80" DefaultValue="https://officekiss.azurewebsites.net/images/80x80.png"/>
-      </bt:Images>
-      <bt:Urls>
-        <bt:Url id="readPaneUrl" DefaultValue="https://officekiss.azurewebsites.net/index.html"/>
-      </bt:Urls>
-      <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="Persona Cards"/>
-        <bt:String id="readButtonLabel" DefaultValue="Persona Cards"/>
-        <bt:String id="readTipTitle" DefaultValue="Persona Cards"/>
-      </bt:ShortStrings>
-      <bt:LongStrings>
-        <bt:String id="readTipDescription" DefaultValue="Display Persona Cards for every person on an email or appointment."/>
-      </bt:LongStrings>
-    </Resources>
-
-
-  </VersionOverrides>
-
-
+    <Requirements>
+        <Sets>
+            <Set Name="MailBox" MinVersion="1.1" />
+        </Sets>
+    </Requirements>
+    <FormSettings>
+        <Form xsi:type="ItemRead">
+            <DesktopSettings>
+                <SourceLocation DefaultValue="https://officekiss.azurewebsites.net/index.html" />
+                <RequestedHeight>250</RequestedHeight>
+            </DesktopSettings>
+        </Form>
+    </FormSettings>
+    <Permissions>ReadItem</Permissions>
+    <Rule xsi:type="RuleCollection" Mode="Or">
+        <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+        <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read" />
+    </Rule>
+    <DisableEntityHighlighting>false</DisableEntityHighlighting>
 </OfficeApp>
